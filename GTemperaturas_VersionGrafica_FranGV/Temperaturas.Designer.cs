@@ -34,12 +34,13 @@
             this.label1 = new System.Windows.Forms.Label();
             this.buttonAgregarTemperatura = new System.Windows.Forms.Button();
             this.comboBoxListaCiudades = new System.Windows.Forms.ComboBox();
-            this.comboBoxListaTemperaturas = new System.Windows.Forms.ComboBox();
             this.label2 = new System.Windows.Forms.Label();
-            this.label3 = new System.Windows.Forms.Label();
+            this.LabelAT = new System.Windows.Forms.Label();
             this.buttonMedia = new System.Windows.Forms.Button();
             this.textBoxMediaAnual = new System.Windows.Forms.TextBox();
             this.listBoxTemperaturas = new System.Windows.Forms.ListBox();
+            this.textBoxAgregarTemperaturas = new System.Windows.Forms.TextBox();
+            this.buttonGuardarTemp = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // buttonAgregarCiudad
@@ -71,7 +72,7 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(28, 128);
+            this.label1.Location = new System.Drawing.Point(28, 149);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(113, 13);
             this.label1.TabIndex = 6;
@@ -80,7 +81,7 @@
             // buttonAgregarTemperatura
             // 
             this.buttonAgregarTemperatura.Enabled = false;
-            this.buttonAgregarTemperatura.Location = new System.Drawing.Point(377, 128);
+            this.buttonAgregarTemperatura.Location = new System.Drawing.Point(397, 149);
             this.buttonAgregarTemperatura.Name = "buttonAgregarTemperatura";
             this.buttonAgregarTemperatura.Size = new System.Drawing.Size(146, 23);
             this.buttonAgregarTemperatura.TabIndex = 4;
@@ -93,16 +94,9 @@
             this.comboBoxListaCiudades.FormattingEnabled = true;
             this.comboBoxListaCiudades.Location = new System.Drawing.Point(154, 55);
             this.comboBoxListaCiudades.Name = "comboBoxListaCiudades";
-            this.comboBoxListaCiudades.Size = new System.Drawing.Size(121, 21);
+            this.comboBoxListaCiudades.Size = new System.Drawing.Size(202, 21);
             this.comboBoxListaCiudades.TabIndex = 7;
-            // 
-            // comboBoxListaTemperaturas
-            // 
-            this.comboBoxListaTemperaturas.FormattingEnabled = true;
-            this.comboBoxListaTemperaturas.Location = new System.Drawing.Point(154, 281);
-            this.comboBoxListaTemperaturas.Name = "comboBoxListaTemperaturas";
-            this.comboBoxListaTemperaturas.Size = new System.Drawing.Size(121, 21);
-            this.comboBoxListaTemperaturas.TabIndex = 8;
+            this.comboBoxListaCiudades.SelectedIndexChanged += new System.EventHandler(this.comboBoxListaCiudades_SelectedIndexChanged);
             // 
             // label2
             // 
@@ -113,20 +107,21 @@
             this.label2.TabIndex = 9;
             this.label2.Text = "Lista Ciudades:";
             // 
-            // label3
+            // LabelAT
             // 
-            this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(39, 281);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(103, 13);
-            this.label3.TabIndex = 10;
-            this.label3.Text = "Lista Temperaturas: ";
+            this.LabelAT.AutoSize = true;
+            this.LabelAT.Location = new System.Drawing.Point(38, 203);
+            this.LabelAT.Name = "LabelAT";
+            this.LabelAT.Size = new System.Drawing.Size(111, 13);
+            this.LabelAT.TabIndex = 10;
+            this.LabelAT.Text = "Añadir Temperaturas: ";
             // 
             // buttonMedia
             // 
-            this.buttonMedia.Location = new System.Drawing.Point(21, 326);
+            this.buttonMedia.Enabled = false;
+            this.buttonMedia.Location = new System.Drawing.Point(21, 368);
             this.buttonMedia.Name = "buttonMedia";
-            this.buttonMedia.Size = new System.Drawing.Size(146, 23);
+            this.buttonMedia.Size = new System.Drawing.Size(113, 23);
             this.buttonMedia.TabIndex = 11;
             this.buttonMedia.Text = "Media Anual";
             this.buttonMedia.UseVisualStyleBackColor = true;
@@ -134,30 +129,50 @@
             // 
             // textBoxMediaAnual
             // 
-            this.textBoxMediaAnual.Location = new System.Drawing.Point(183, 328);
+            this.textBoxMediaAnual.Enabled = false;
+            this.textBoxMediaAnual.Location = new System.Drawing.Point(154, 370);
             this.textBoxMediaAnual.Name = "textBoxMediaAnual";
             this.textBoxMediaAnual.Size = new System.Drawing.Size(202, 20);
             this.textBoxMediaAnual.TabIndex = 12;
             // 
             // listBoxTemperaturas
             // 
+            this.listBoxTemperaturas.Enabled = false;
             this.listBoxTemperaturas.FormattingEnabled = true;
-            this.listBoxTemperaturas.Location = new System.Drawing.Point(155, 128);
+            this.listBoxTemperaturas.Location = new System.Drawing.Point(154, 203);
             this.listBoxTemperaturas.Name = "listBoxTemperaturas";
-            this.listBoxTemperaturas.Size = new System.Drawing.Size(201, 121);
+            this.listBoxTemperaturas.Size = new System.Drawing.Size(202, 121);
             this.listBoxTemperaturas.TabIndex = 13;
+            // 
+            // textBoxAgregarTemperaturas
+            // 
+            this.textBoxAgregarTemperaturas.Location = new System.Drawing.Point(154, 149);
+            this.textBoxAgregarTemperaturas.Name = "textBoxAgregarTemperaturas";
+            this.textBoxAgregarTemperaturas.Size = new System.Drawing.Size(202, 20);
+            this.textBoxAgregarTemperaturas.TabIndex = 14;
+            // 
+            // buttonGuardarTemp
+            // 
+            this.buttonGuardarTemp.Enabled = false;
+            this.buttonGuardarTemp.Location = new System.Drawing.Point(397, 203);
+            this.buttonGuardarTemp.Name = "buttonGuardarTemp";
+            this.buttonGuardarTemp.Size = new System.Drawing.Size(146, 23);
+            this.buttonGuardarTemp.TabIndex = 17;
+            this.buttonGuardarTemp.Text = "Guardar Temperaturas";
+            this.buttonGuardarTemp.UseVisualStyleBackColor = true;
             // 
             // Temperaturas
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(651, 415);
+            this.ClientSize = new System.Drawing.Size(568, 420);
+            this.Controls.Add(this.buttonGuardarTemp);
+            this.Controls.Add(this.textBoxAgregarTemperaturas);
             this.Controls.Add(this.listBoxTemperaturas);
             this.Controls.Add(this.textBoxMediaAnual);
             this.Controls.Add(this.buttonMedia);
-            this.Controls.Add(this.label3);
+            this.Controls.Add(this.LabelAT);
             this.Controls.Add(this.label2);
-            this.Controls.Add(this.comboBoxListaTemperaturas);
             this.Controls.Add(this.comboBoxListaCiudades);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.buttonAgregarTemperatura);
@@ -180,12 +195,13 @@
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Button buttonAgregarTemperatura;
         private System.Windows.Forms.ComboBox comboBoxListaCiudades;
-        private System.Windows.Forms.ComboBox comboBoxListaTemperaturas;
         private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.Label LabelAT;
         private System.Windows.Forms.Button buttonMedia;
         private System.Windows.Forms.TextBox textBoxMediaAnual;
         private System.Windows.Forms.ListBox listBoxTemperaturas;
+        private System.Windows.Forms.TextBox textBoxAgregarTemperaturas;
+        private System.Windows.Forms.Button buttonGuardarTemp;
     }
 }
 
