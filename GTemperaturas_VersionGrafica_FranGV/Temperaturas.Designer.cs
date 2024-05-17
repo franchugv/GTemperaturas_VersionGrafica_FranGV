@@ -160,6 +160,7 @@
             this.buttonGuardarTemp.TabIndex = 17;
             this.buttonGuardarTemp.Text = "Guardar Temperaturas";
             this.buttonGuardarTemp.UseVisualStyleBackColor = true;
+            this.buttonGuardarTemp.Click += new System.EventHandler(this.Controlador_Click);
             // 
             // Temperaturas
             // 

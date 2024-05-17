@@ -68,6 +68,8 @@ namespace GTemperaturas_VersionGrafica_FranGV.API
             {
                 Escritor.WriteLine(ListaTemp[indice]);
             }
+
+            Escritor.Close();
         }
 
         public static string[] ConsultarDirectorio()
@@ -109,7 +111,7 @@ namespace GTemperaturas_VersionGrafica_FranGV.API
 
             ListaTemperaturas = File.ReadAllLines(DIRECTORIO+nombreFichero+EXTENSION);
 
-
+            Lector.Close();
 
             return ListaTemperaturas;
         }

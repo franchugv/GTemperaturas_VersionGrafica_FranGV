@@ -30,7 +30,6 @@ namespace GTemperaturas_VersionGrafica_FranGV
             string NombreCiudad = textBoxCiudad.Text;
             string[] ListaTemperaturas = listBoxTemperaturas.Items.Cast<string>().ToArray();
 
-            // Inicializar Botones
 
 
 
@@ -41,26 +40,18 @@ namespace GTemperaturas_VersionGrafica_FranGV
                     case "buttonAgregarCiudad":
 
                         AgregarCiudad(NombreCiudad);
+                        textBoxCiudad.Clear();
 
                         break;
                     case "buttonAgregarTemperatura":
 
-                        if (listBoxTemperaturas.Items.Count > 2) 
-                        {
-                            buttonAgregarTemperatura.Enabled = false;
-                            buttonGuardarTemp.Enabled = true;
-                        } 
-
-
-
                         AgregarTemperaturas();
-
-
-                 
-
-
                         break;
                     case "buttonMedia":
+                        break;
+                    case "buttonGuardarTemp":
+                            GuardarTemperaturas();
+                            buttonGuardarTemp.Enabled=false;
                         break;
                 }
             
@@ -78,7 +69,7 @@ namespace GTemperaturas_VersionGrafica_FranGV
 
                     buttonAgregarTemperatura.Enabled = false;
                     buttonMedia.Enabled = false;
-                    textBoxAgregarTemperaturas.Enabled = true;
+                    textBoxAgregarTemperaturas.Enabled = false;
                     listBoxTemperaturas.Enabled = false;
                     textBoxMediaAnual.Enabled = false;
 
@@ -90,6 +81,20 @@ namespace GTemperaturas_VersionGrafica_FranGV
 
 
         // Funciones botones
+
+
+
+        private void GuardarTemperaturas()
+        {
+            string[] ListaTemperaturas = listBoxTemperaturas.Items.Cast<string>().ToArray();
+
+
+            APIFicheros.AgregarTemperaturas(comboBoxListaCiudades.Text, ListaTemperaturas);
+        }
+
+
+
+
 
         private void AgregarCiudad(string NombreCiudad)
         {
@@ -110,6 +115,16 @@ namespace GTemperaturas_VersionGrafica_FranGV
 
         public void AgregarTemperaturas()
         {
+
+
+            if (listBoxTemperaturas.Items.Count > 10)
+            {
+                buttonAgregarTemperatura.Enabled = false;
+                buttonGuardarTemp.Enabled = true;
+            }
+
+
+            if (string.IsNullOrEmpty(textBoxAgregarTemperaturas.Text)) throw new Exception("Cadeba Vacía");
 
             listBoxTemperaturas.Items.Add(textBoxAgregarTemperaturas.Text);
 
@@ -152,6 +167,7 @@ namespace GTemperaturas_VersionGrafica_FranGV
 
             try
             {
+                listBoxTemperaturas.Items.AddRange(APIFicheros.ConsultarFichero(comboBoxListaCiudades.Text));
             }
             catch (Exception Error)
             {
